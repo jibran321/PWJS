@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap-4.6.2-dist/css/bootstrap.min.css">
+    <title>Form Validation</title>
+</head>
+
+<body>
+    <div class="continer p-5">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" name="" id="userName" class="form-control" placeholder="" aria-describedby="helpId">
+                <!-- <small id="helpId" class="text-muted">Help text</small> -->
+            </div>
+     
+        <!-- name -->
+        <div class="form-group">
+            <label for="">Email</label>
+            <input type="text" name="" id="userEmail" class="form-control" placeholder="" aria-describedby="helpId">
+            <small id="helpId" class=""></small>
+        </div>
+        <!-- email -->
+        <div class="form-group">
+            <label for="">Password</label>
+            <input type="text" name="" id="userPassword" class="form-control" placeholder="" aria-describedby="helpId">
+            <small id="helpId" class=""></small>
+        </div>
+        <!-- password -->
+        <div class="form-group">
+            <label for="">Confirm Password</label>
+            <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+            <small id="helpId" class=""></small>
+        </div>
+        <!-- Confirm Password -->
+        <button class="btn btn-info"> |Add user</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <script src="jquery-3.7.1.js"></script>
+        <script src="bootstrap-4.6.2-dist/js/bootstrap.min.js"></script>
+        <!-- // <script src="app.js"></script> -->
+        <script>
+            $("#userName").keyup(function () {
+                let uName = $(this).val();
+                console.log(uName)
+                let uNameRE = /^[a-z]{3,}$/;
+                if (!(uNameRE.test(uName))) {
+                    $(this).css("border", "2px solid red")
+                    $(this).next('small').show().text('Please fill this field correctly').css('color', 'red')
+                }
+                else {
+                    $(this).css("border", "2px solid green");
+                    $(this).next("small").hide();
+                }
+            })
+            // email RE
+            $("#userEmail").keyup(function () {
+                let uEmail = $(this).val();
+                console.log(uEmail);
+                let uEmailRE = /^[a-z0-9_.]{3,10}[@][a-z]{5}[.][a-z]{3}$/;
+                if (!(uEmailRE.test(uEmail))) {
+                    $(this).css("border", "2px solid red");
+                    $(this).next("small").show().text('bhi jan akhri bar pier ghar chale jawo').css('color', 'red')
+
+                }
+                else {
+                    $(this).css("border", "2px solid green");
+                    $(this).next("small").hide();
+                }
+
+            })
+            // user Password
+            $("userPassword").keyup(function () {
+                    let uPassword = $(this).val();
+                     let uPasswordRE =/^(?=.*[a-z])(?=.*[A-Z])(?=.[0-9])[^a-zA-Z/d].{8,}$/;
+                     
+                    if (!(uPasswordRE.test(uPassword))){
+                        $(this).css("border", "2px solid red");
+                        $(this).next("small").show().text('password should contains one lowerone digit and special caracter     ').css('color', 'red')
+                    }
+                     else {
+                        $(this).css("border", "2px solid green");
+                        $(this).next("small").hide();
+                    }
+
+            })
+
+        </script>
+
+</body>
+
+</html>
